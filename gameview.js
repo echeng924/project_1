@@ -3,8 +3,8 @@
 
 
 let board = new Board();
-let p1 = new Paddle();
-let p2 = new Paddle();
+let p1 = new Paddle(10, board.height/2-10);
+let p2 = new Paddle(580, board.height/2-10);
 let ball = new Ball();
 
 function draw () {
@@ -16,4 +16,5 @@ function draw () {
 
 draw();
 
+setInterval(draw, 1000);
 
