@@ -1,11 +1,10 @@
 //Game view start game
 //render here
 
-
 let board = new Board();
-let p1 = new Paddle(10, board.height/2-10);
-let p2 = new Paddle(580, board.height/2-10);
-let ball = new Ball();
+let p1 = new Paddle(10, board.height/2-10, 81, 90);
+let p2 = new Paddle(580, board.height/2-10, 38, 40);
+let ball = new Ball(board);
 
 function draw () {
   board.draw();
@@ -15,6 +14,8 @@ function draw () {
 }
 
 draw();
+p1.keyMovement();
+p2.keyMovement();
 
-setInterval(draw, 1000);
+setInterval(draw, 50);
 

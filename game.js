@@ -1,7 +1,9 @@
 class Game {
   constructor() {
     this.maxScore = 10;
+    this.ball = new Ball();
     this.reset = new Reset();
+
   }
 
   scoreLogic() {
