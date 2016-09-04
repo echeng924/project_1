@@ -10,10 +10,10 @@ class Game {
   scoreDraw() {
     let canvas = document.getElementById('game');
     let ctx = canvas.getContext('2d');
-    ctx.font = '40px Bungee';
+    ctx.font = '50px Bungee';
     ctx.fillStyle = 'white';
-    ctx.fillText(this.p1.score, 50, 50);
-    ctx.fillText(this.p2.score, 730, 50);
+    ctx.fillText(this.p1.score, 310, 60);
+    ctx.fillText(this.p2.score, 450, 60);
   }
 
   startScreenDraw() {
@@ -21,13 +21,14 @@ class Game {
     let ctx = canvas.getContext('2d');
     ctx.fillStyle = 'black';
     ctx.fillRect(0, 0, this.board.width, this.board.height);
-    ctx.font = '19px Bungee';
+    ctx.font = '25px Bungee';
     ctx.fillStyle = 'white';
-    ctx.fillText('Start game by clicking the screen.  P1 keys: Q & Z.  P2 keys: Up & Down.', 15, 230);
+    ctx.fillText('Start game by clicking the screen.', 20, 230);
+    ctx.fillText('P1 keys: Q & Z.  P2 keys: Up & Down Arrows.', 40, 270);
     document.addEventListener('click', () => {
       refreshGame = setInterval(update, 100);
     });
-    console.log('clicked')
+    console.log('clicked');
   }
 
   draw() {
@@ -45,11 +46,11 @@ class Game {
 
   paddleCollision() {
     if (this.ball.x <= this.p1.x + this.p1.width &&
-        this.ball.y >= this.p1.y && this.ball.y <= this.p1.y + this.p1.height) {
+        this.ball.y >= this.p1.y && this.ball.y <= this.p1.y + this.p1.height && this.ball.velX<0) {
       this.ball.velX = (this.ball.velX * -1);
       console.log('hit p1 paddle');
     } else if (this.ball.x + this.ball.side >= this.p2.x &&
-      this.ball.y >= this.p1.y && this.ball.y <= this.p1.y + this.p1.height) {
+      this.ball.y >= this.p2.y && this.ball.y <= this.p2.y + this.p2.height && this.ball.velX>0) {
       this.ball.velX = (this.ball.velX * -1);
       console.log('hit p2 paddle');
     }
@@ -67,9 +68,11 @@ class Game {
     if (this.p1.score === this.maxScore) {
       alert('Game over, Player 1 wins!');
       clearInterval(refreshGame);
+      location.reload();
     } else if (this.p2.score === this.maxScore) {
       alert('Game over, Player 2 wins!');
       clearInterval(refreshGame);
+      location.reload();
     }
   }
 

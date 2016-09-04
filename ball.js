@@ -4,9 +4,8 @@ class Ball {
     this.side = 12;
     this.x = board.width / 2;
     this.y = board.height / 2;
-    this.speed = 0; //starting speed...set at random?
-    this.velX = 10;
-    this.velY = 10;
+    this.velX = 13;
+    this.velY = 13;
   }
 
   ballMovement() {
