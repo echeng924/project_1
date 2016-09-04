@@ -12,17 +12,25 @@ class Paddle {
   }
 
   keyMovement() {
-  document.addEventListener('keydown', (e) => {
-    if (e.keyCode === this.keyDown) {
-      this.y += 15;
-    }
-  });
+    document.addEventListener('keydown', (e) => {
+      if (e.keyCode === this.keyDown) {
+        if (this.y + this.height < 500) {
+          this.y += 20;
+        } else {
+          this.y += 0;
+        }
+      }
+    });
 
-  document.addEventListener('keydown', (e) => {
-    if (e.keyCode === this.keyUp) {
-      this.y -= 15;
-    }
-  });
+    document.addEventListener('keydown', (e) => {
+      if (e.keyCode === this.keyUp) {
+        if (this.y > 0) {
+          this.y -= 20;
+        } else {
+          this.y += 0;
+        }
+      }
+    });
   }
 
   draw() {

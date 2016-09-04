@@ -4,8 +4,8 @@ class Ball {
     this.side = 12;
     this.x = board.width / 2;
     this.y = board.height / 2;
-    this.velX = 13;
-    this.velY = 13;
+    this.velX = 9;
+    this.velY = 9;
   }
 
   ballMovement() {
