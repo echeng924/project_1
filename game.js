@@ -1,19 +1,33 @@
 class Game {
   constructor() {
-    this.maxScore = 10;
+    this.maxScore = 3;
     this.board = new Board();
     this.p1 = new Paddle(10, this.board.height/2-10, 81, 90);
-    this.p2 = new Paddle(580, this.board.height/2-10, 38, 40);
+    this.p2 = new Paddle(780, this.board.height/2-10, 38, 40);
     this.ball = new Ball(this.board);
   }
 
   scoreDraw() {
     let canvas = document.getElementById('game');
     let ctx = canvas.getContext('2d');
-    ctx.font = '30px Bungee';
+    ctx.font = '40px Bungee';
     ctx.fillStyle = 'white';
-    ctx.fillText(this.p1.score, 40, 40);
-    ctx.fillText(this.p2.score, 540, 40);
+    ctx.fillText(this.p1.score, 50, 50);
+    ctx.fillText(this.p2.score, 730, 50);
+  }
+
+  startScreenDraw() {
+    let canvas = document.getElementById('game');
+    let ctx = canvas.getContext('2d');
+    ctx.fillStyle = 'black';
+    ctx.fillRect(0, 0, this.board.width, this.board.height);
+    ctx.font = '19px Bungee';
+    ctx.fillStyle = 'white';
+    ctx.fillText('Start game by clicking the screen.  P1 keys: Q & Z.  P2 keys: Up & Down.', 15, 230);
+    document.addEventListener('click', () => {
+      refreshGame = setInterval(update, 100);
+    });
+    console.log('clicked')
   }
 
   draw() {
@@ -25,23 +39,37 @@ class Game {
   }
 
   startGame() {
-    this.draw();
     this.p1.keyMovement();
     this.p2.keyMovement();
+  }
+
+  paddleCollision() {
+    if (this.ball.x <= this.p1.x + this.p1.width &&
+        this.ball.y >= this.p1.y && this.ball.y <= this.p1.y + this.p1.height) {
+      this.ball.velX = (this.ball.velX * -1);
+      console.log('hit p1 paddle');
+    } else if (this.ball.x + this.ball.side >= this.p2.x &&
+      this.ball.y >= this.p1.y && this.ball.y <= this.p1.y + this.p1.height) {
+      this.ball.velX = (this.ball.velX * -1);
+      console.log('hit p2 paddle');
+    }
   }
 
   scoreLogic() {
     if (this.ball.x <= 0) {
       this.p2.score++;
-    } else if (this.ball.x >= this.board.width- this.ball.side) {
+    } else if (this.ball.x >= this.board.width - this.ball.side) {
       this.p1.score++;
     }
   }
 
   endGame() {
-    if(p1.score === this.maxScore || p2.score === this.maxScore) {
-      alert('Game over'); //alert winner
-
+    if (this.p1.score === this.maxScore) {
+      alert('Game over, Player 1 wins!');
+      clearInterval(refreshGame);
+    } else if (this.p2.score === this.maxScore) {
+      alert('Game over, Player 2 wins!');
+      clearInterval(refreshGame);
     }
   }
 
@@ -49,12 +77,21 @@ class Game {
 
 let newGame = new Game();
 newGame.startGame();
-function draw() {
+setTimeout( () => {
+newGame.startScreenDraw();
+}, 250);
+
+function update() {
   newGame.scoreLogic();
   newGame.draw();
+  newGame.paddleCollision();
+  newGame.endGame();
 }
 
-setInterval(draw, 100);
+let refreshGame;
+
+// let refreshGame = setInterval(update, 100);
+
 
 
 

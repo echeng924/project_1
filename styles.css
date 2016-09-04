@@ -2,27 +2,12 @@ body {
   background: cornflowerblue;
 }
 
-/*#board {
-  width: 37.5rem;
-  height: 25rem;
-  background: black;
+h1 {
+  font-family: 'Bungee', cursive;
 }
 
-.paddle {
-  width: 0.7rem;
-  height: 6rem;
-  background: white;
+#game {
+  margin: 0 auto;
+  padding-top: 5rem;
+  display: block;
 }
-
-#p1 {
-  position: absolute;
-  top: 10rem;
-  left: 2rem;
-}
-
-#p2 {
-  position: absolute;
-  right: 54rem;
-  top: 15rem;
-}
-*/

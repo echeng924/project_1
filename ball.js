@@ -5,8 +5,8 @@ class Ball {
     this.x = board.width / 2;
     this.y = board.height / 2;
     this.speed = 0; //starting speed...set at random?
-    this.velX = 8;
-    this.velY = 8;
+    this.velX = 10;
+    this.velY = 10;
   }
 
   ballMovement() {

@@ -3,7 +3,7 @@ class Paddle {
     //where w and h determine size of paddle and x & y are position on board
     //change to take width and height, x and y for 2 players
     this.width = 10;
-    this.height = 70;
+    this.height = 80;
     this.x = x;
     this.y = y;
     this.score = 0;
@@ -14,13 +14,13 @@ class Paddle {
   keyMovement() {
   document.addEventListener('keydown', (e) => {
     if (e.keyCode === this.keyDown) {
-      this.y += 8;
+      this.y += 15;
     }
   });
 
   document.addEventListener('keydown', (e) => {
     if (e.keyCode === this.keyUp) {
-      this.y -= 8;
+      this.y -= 15;
     }
   });
   }
