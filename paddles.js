@@ -15,7 +15,7 @@ class Paddle {
     document.addEventListener('keydown', (e) => {
       if (e.keyCode === this.keyDown) {
         if (this.y + this.height < 500) {
-          this.y += 20;
+          this.y += 25;
         } else {
           this.y += 0;
         }
@@ -25,7 +25,7 @@ class Paddle {
     document.addEventListener('keydown', (e) => {
       if (e.keyCode === this.keyUp) {
         if (this.y > 0) {
-          this.y -= 20;
+          this.y -= 25;
         } else {
           this.y += 0;
         }
