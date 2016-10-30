@@ -3,7 +3,7 @@ class Game {
     this.maxScore = 3;
     this.board = new Board();
     this.p1 = new Paddle(20, this.board.height/2-10, 81, 90);
-    this.p2 = new Paddle(770, this.board.height/2-10, 38, 40);
+    this.p2 = new Paddle(770, this.board.height/2-10, 80, 77);
     this.ball = new Ball(this.board);
     this.audio = new Audio('pong.wav');
   }
@@ -25,7 +25,7 @@ class Game {
     ctx.font = '25px Bungee';
     ctx.fillStyle = 'white';
     ctx.fillText('Start game by clicking the screen.', 20, 230);
-    ctx.fillText('P1 keys: Q & Z.  P2 keys: Up & Down Arrows.', 50, 270);
+    ctx.fillText('P1 keys: Q & Z.  P2 keys: P & M.', 50, 270);
     document.addEventListener('click', () => {
       refreshGame = setInterval(update, 100);
     });
